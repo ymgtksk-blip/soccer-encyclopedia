@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ymgtksk-blip.github.io/soccer-encyclopedia/sitemap.xml
