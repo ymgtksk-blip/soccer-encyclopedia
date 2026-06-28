@@ -65,7 +65,7 @@ function renderChips(){
 function card(c){
  const img=c.img?`<img class="thumb" loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">`:`<div class="noimg">⚽</div>`;
  const sub=[c.co?flag(c.co):"",c.club,c.pos?pretty(c.pos):""].filter(Boolean).join(" · ");
- return `<div class="card" data-id="${esc(c.id)}">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)} ${c.v?'<span class="badge ok">✓</span>':'<span class="badge no">?</span>'}</div></div></div>`;
+ return `<a class="card" href="players/${esc(c.id)}.html">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)} ${c.v?'<span class="badge ok">✓</span>':'<span class="badge no">?</span>'}</div></div></a>`;
 }
 function render(){
  const list=filtered();const pages=Math.max(1,Math.ceil(list.length/PS));if(page>=pages)page=0;
