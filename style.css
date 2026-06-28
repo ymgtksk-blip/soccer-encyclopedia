@@ -51,3 +51,4 @@ footer{max-width:1200px;margin:24px auto;padding:16px;color:var(--sub);font-size
 .tla{color:var(--sub);font-size:12px;white-space:nowrap}
 .nowtag{display:inline-block;margin-left:8px;font-size:10px;font-weight:800;color:#06210f;background:var(--accent);border-radius:99px;padding:1px 7px;vertical-align:middle}
 a.card{color:inherit;display:block}
+.sortsel{font-weight:600;max-width:160px}

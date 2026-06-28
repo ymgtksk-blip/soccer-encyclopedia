@@ -10,6 +10,7 @@
  </div>
  <div class="bar">
   <input id="q" class="q" type="search" placeholder="Search…">
+  <select id="sort" class="sortsel" aria-label="Sort"><option value="pop"></option><option value="active"></option><option value="young"></option><option value="old"></option><option value="name"></option></select>
   <button id="mfac" class="mobic">▤ Filters</button>
   <span class="count" id="count"></span>
  </div>
@@ -27,8 +28,8 @@
 </div>
 <div id="ov"><div id="ovbox"></div></div>
 <script>
-const UI={"search": {"en": "Search…", "ja": "検索…"}, "fCountry": {"en": "Nationality", "ja": "国籍"}, "fClub": {"en": "Club", "ja": "クラブ"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}};
-let L="ja",ITEMS=[],page=0;const PS=48;
+const UI={"search": {"en": "Search…", "ja": "検索…"}, "fCountry": {"en": "Nationality", "ja": "国籍"}, "fClub": {"en": "Club", "ja": "クラブ"}, "sortPop": {"en": "★ Popular", "ja": "人気順"}, "sortActive": {"en": "● Active first", "ja": "現役を上に"}, "sortYoung": {"en": "Youngest", "ja": "若い順"}, "sortOld": {"en": "Oldest", "ja": "ベテラン順"}, "sortName": {"en": "Name A–Z", "ja": "名前順"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}};
+let L="ja",ITEMS=[],page=0,SORT="pop";const PS=48;
 const F={co:new Set(),club:new Set(),q:""};
 const FB=["en","ja"];
 function t(k){return (UI[k]||{})[L]||(UI[k]||{}).en||k;}
@@ -64,11 +65,18 @@ function renderChips(){
 }
 function card(c){
  const img=c.img?`<img class="thumb" loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">`:`<div class="noimg">⚽</div>`;
- const sub=[c.co?flag(c.co):"",c.club,c.pos?pretty(c.pos):""].filter(Boolean).join(" · ");
+ const sub=[c.co?flag(c.co):"",c.club,c.pos?pretty(c.pos):"",c.by?(c.act?("🟢 "+c.by):c.by):""].filter(Boolean).join(" · ");
  return `<a class="card" href="players/${esc(c.id)}.html">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)} ${c.v?'<span class="badge ok">✓</span>':'<span class="badge no">?</span>'}</div></div></a>`;
 }
+function sortList(a){
+ if(SORT==="name")return a.sort((x,y)=>pick(x.n).localeCompare(pick(y.n)));
+ if(SORT==="young")return a.sort((x,y)=>(y.by||0)-(x.by||0)||(y.sl||0)-(x.sl||0));
+ if(SORT==="old")return a.sort((x,y)=>(x.by||9999)-(y.by||9999)||(y.sl||0)-(x.sl||0));
+ if(SORT==="active")return a.sort((x,y)=>(y.act||0)-(x.act||0)||(y.sl||0)-(x.sl||0));
+ return a.sort((x,y)=>(y.sl||0)-(x.sl||0));
+}
 function render(){
- const list=filtered();const pages=Math.max(1,Math.ceil(list.length/PS));if(page>=pages)page=0;
+ const list=sortList(filtered());const pages=Math.max(1,Math.ceil(list.length/PS));if(page>=pages)page=0;
  document.getElementById("grid").innerHTML=list.slice(page*PS,page*PS+PS).map(card).join("")||`<p class="count">${t("noData")}</p>`;
  document.getElementById("count").textContent=list.length.toLocaleString()+" "+t("results");
  document.getElementById("pager").innerHTML=pages>1?`<button id="prev" ${page===0?"disabled":""}>‹ ${t("prev")}</button><span class="count">${page+1} / ${pages}</span><button id="next" ${page>=pages-1?"disabled":""}>${t("next")} ›</button>`:"";
@@ -89,7 +97,8 @@ function showDetail(id){
 }
 function applyLabels(){document.documentElement.lang=L;document.body.dir=(L==="ar")?"rtl":"ltr";
  document.getElementById("q").placeholder=t("search");document.getElementById("hCountry").textContent=t("fCountry");document.getElementById("hClub").textContent=t("fClub");
- const np=document.getElementById("navP"),nc=document.getElementById("navC");if(np)np.textContent="⚽ "+t("navPlayers");if(nc)nc.textContent="🏟️ "+t("navClubs");}
+ const np=document.getElementById("navP"),nc=document.getElementById("navC");if(np)np.textContent="⚽ "+t("navPlayers");if(nc)nc.textContent="🏟️ "+t("navClubs");
+ const so=document.getElementById("sort");if(so){const m={pop:t("sortPop"),active:t("sortActive"),young:t("sortYoung"),old:t("sortOld"),name:t("sortName")};for(const o of so.options)o.textContent=m[o.value];}}
 document.addEventListener("click",e=>{
  const fi=e.target.closest(".fitem");if(fi){const d=fi.dataset.d,k=fi.dataset.k;F[d].has(k)?F[d].delete(k):F[d].add(k);page=0;refresh();return;}
  const ch=e.target.closest(".chip");if(ch){F[ch.dataset.d].delete(ch.dataset.k);page=0;refresh();return;}
@@ -101,6 +110,7 @@ document.addEventListener("click",e=>{
 });
 function deb(fn,ms){let h;return function(){clearTimeout(h);h=setTimeout(fn,ms);};}
 document.getElementById("q").addEventListener("input",deb(()=>{F.q=document.getElementById("q").value.trim().toLowerCase();page=0;refresh();},200));
+document.getElementById("sort").addEventListener("change",e=>{SORT=e.target.value;page=0;render();});
 document.getElementById("fcoq").addEventListener("input",deb(renderFacets,200));
 document.getElementById("fclq").addEventListener("input",deb(renderFacets,200));
 document.getElementById("lang").addEventListener("change",e=>{L=e.target.value;applyLabels();refresh();});
