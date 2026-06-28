@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World Footballer Encyclopedia</title><meta name="description" content="Footballers from around the world — browse by nationality and club, with photos. Multilingual.">
-<link rel="canonical" href="https://ymgtksk-blip.github.io/soccer-encyclopedia/"><link rel="stylesheet" href="style.css"></head>
+<title>World Footballer Encyclopedia — Clubs</title><meta name="description" content="Football clubs from around the world — browse by country and league, with photos. Multilingual.">
+<link rel="canonical" href="https://ymgtksk-blip.github.io/soccer-encyclopedia/clubs.html"><link rel="stylesheet" href="style.css"></head>
 <body>
 <header>
  <div class="bar" style="margin-top:0">
   <span class="brand">⚽ World Footballer Encyclopedia</span>
-  <nav class="nav"><a class="on" id="navP" href="index.html">Players</a><a id="navC" href="clubs.html">Clubs</a></nav>
+  <nav class="nav"><a id="navP" href="index.html">Players</a><a class="on" id="navC" href="clubs.html">Clubs</a></nav>
   <select id="lang" class="langsel" aria-label="Language / 言語"><option value="en">English</option><option value="zh">中文</option><option value="hi">हिन्दी</option><option value="es">Español</option><option value="ar">العربية</option><option value="fr">Français</option><option value="pt">Português</option><option value="ru">Русский</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="ko">한국어</option><option value="it">Italiano</option></select>
  </div>
  <div class="bar">
@@ -17,20 +17,20 @@
 </header>
 <div class="layout">
  <aside class="facets" id="facets">
-  <div class="fgroup"><h3 id="hCountry">Nationality</h3><input class="ffilter" id="fcoq" placeholder="filter…"><div class="flist" id="fco"></div></div>
-  <div class="fgroup"><h3 id="hClub">Club</h3><input class="ffilter" id="fclq" placeholder="filter…"><div class="flist" id="fcl"></div></div>
+  <div class="fgroup"><h3 id="hCountry">Country</h3><input class="ffilter" id="fcoq" placeholder="filter…"><div class="flist" id="fco"></div></div>
+  <div class="fgroup"><h3 id="hLeague">League</h3><input class="ffilter" id="flgq" placeholder="filter…"><div class="flist" id="flg"></div></div>
  </aside>
  <main class="main">
   <div class="chips" id="chips"></div>
-  <div class="grid" id="grid"></div>
+  <div class="cgrid" id="grid"></div>
   <div class="pager" id="pager"></div>
  </main>
 </div>
 <div id="ov"><div id="ovbox"></div></div>
 <script>
-const UI={"search": {"en": "Search…", "ja": "検索…"}, "fCountry": {"en": "Nationality", "ja": "国籍"}, "fClub": {"en": "Club", "ja": "クラブ"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}};
+const UI={"search": {"en": "Search clubs…", "ja": "クラブを検索…"}, "fCountry": {"en": "Country", "ja": "国"}, "fLeague": {"en": "League", "ja": "リーグ"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}, "founded": {"en": "Founded", "ja": "創設"}, "stadium": {"en": "Stadium", "ja": "本拠地"}};
 let L="ja",ITEMS=[],page=0;const PS=48;
-const F={co:new Set(),club:new Set(),q:""};
+const F={co:new Set(),lg:new Set(),q:""};
 const FB=["en","ja"];
 function t(k){return (UI[k]||{})[L]||(UI[k]||{}).en||k;}
 function pick(o){if(!o)return "";if(typeof o==="string")return o;if(o[L])return o[L];for(const c of FB){if(o[c])return o[c];}const v=Object.values(o);return v.length?v[0]:"";}
@@ -38,35 +38,33 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","
 function flag(cc){if(!cc||cc.length!==2)return "🏳️";try{return cc.toUpperCase().replace(/./g,c=>String.fromCodePoint(127397+c.charCodeAt(0)));}catch(e){return "🏳️";}}
 let _DN=null,_DNL=null;
 function cname(cc){if(!cc)return t("unknown");if(_DNL!==L){try{_DN=new Intl.DisplayNames([L],{type:"region"});}catch(e){_DN=null;}_DNL=L;}try{return _DN?(_DN.of(cc)||cc):cc;}catch(e){return cc;}}
-function pretty(k){if(!k)return "";k=String(k);return k.length<=3?k.toUpperCase():k.replace(/-/g," ").replace(/\b\w/g,c=>c.toUpperCase());}
 
 function matches(c,skip){
  if(skip!=="co"&&F.co.size&&!F.co.has(c.co||""))return false;
- if(skip!=="club"&&F.club.size&&!F.club.has(c.club||""))return false;
- if(F.q){const h=(pick(c.n)+" "+(c.club||"")).toLowerCase();if(!h.includes(F.q))return false;}
+ if(skip!=="lg"&&F.lg.size&&!F.lg.has(c.lg||""))return false;
+ if(F.q){const h=(pick(c.n)+" "+(c.lg||"")+" "+(c.st||"")).toLowerCase();if(!h.includes(F.q))return false;}
  return true;
 }
 function filtered(){return ITEMS.filter(c=>matches(c,null));}
-function facetCounts(dim){const m=new Map();for(const c of ITEMS){if(!matches(c,dim))continue;const k=dim==="co"?(c.co||""):(c.club||"");m.set(k,(m.get(k)||0)+1);}return m;}
-
+function facetCounts(dim){const m=new Map();for(const c of ITEMS){if(!matches(c,dim))continue;const k=dim==="co"?(c.co||""):(c.lg||"");m.set(k,(m.get(k)||0)+1);}return m;}
 function renderFacets(){
  let m=facetCounts("co");let q=(document.getElementById("fcoq").value||"").toLowerCase();
  let arr=[...m.entries()].sort((a,b)=>b[1]-a[1]);
  document.getElementById("fco").innerHTML=arr.filter(([k])=>!q||cname(k).toLowerCase().includes(q)||k.toLowerCase().includes(q)).slice(0,200).map(([k,n])=>
    `<div class="fitem ${F.co.has(k)?"on":""}" data-d="co" data-k="${esc(k)}"><span>${flag(k)} ${esc(cname(k))}</span><span class="c">${n}</span></div>`).join("");
- m=facetCounts("club");q=(document.getElementById("fclq").value||"").toLowerCase();
+ m=facetCounts("lg");q=(document.getElementById("flgq").value||"").toLowerCase();
  arr=[...m.entries()].sort((a,b)=>b[1]-a[1]);
- document.getElementById("fcl").innerHTML=arr.filter(([k])=>k&&(!q||k.toLowerCase().includes(q))).slice(0,300).map(([k,n])=>
-   `<div class="fitem ${F.club.has(k)?"on":""}" data-d="club" data-k="${esc(k)}"><span>${esc(k)}</span><span class="c">${n}</span></div>`).join("");
+ document.getElementById("flg").innerHTML=arr.filter(([k])=>k&&(!q||k.toLowerCase().includes(q))).slice(0,300).map(([k,n])=>
+   `<div class="fitem ${F.lg.has(k)?"on":""}" data-d="lg" data-k="${esc(k)}"><span>${esc(k)}</span><span class="c">${n}</span></div>`).join("");
 }
 function renderChips(){
- const ch=[];F.co.forEach(k=>ch.push(["co",k,`${flag(k)} ${cname(k)}`]));F.club.forEach(k=>ch.push(["club",k,k]));
+ const ch=[];F.co.forEach(k=>ch.push(["co",k,`${flag(k)} ${cname(k)}`]));F.lg.forEach(k=>ch.push(["lg",k,k]));
  document.getElementById("chips").innerHTML=ch.map(([d,k,lab])=>`<span class="chip" data-d="${d}" data-k="${esc(k)}"><b>×</b> ${esc(lab)}</span>`).join("");
 }
 function card(c){
- const img=c.img?`<img class="thumb" loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">`:`<div class="noimg">⚽</div>`;
- const sub=[c.co?flag(c.co):"",c.club,c.pos?pretty(c.pos):""].filter(Boolean).join(" · ");
- return `<div class="card" data-id="${esc(c.id)}">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)} ${c.v?'<span class="badge ok">✓</span>':'<span class="badge no">?</span>'}</div></div></div>`;
+ const img=c.img?`<img class="cthumb" loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">`:`<div class="cnoimg">🏟️</div>`;
+ const sub=[c.co?flag(c.co)+" "+cname(c.co):"",c.lg].filter(Boolean).join(" · ");
+ return `<div class="card" data-id="${esc(c.id)}">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)}</div></div></div>`;
 }
 function render(){
  const list=filtered();const pages=Math.max(1,Math.ceil(list.length/PS));if(page>=pages)page=0;
@@ -79,17 +77,14 @@ function refresh(){renderFacets();render();}
 function showDetail(id){
  const c=ITEMS.find(x=>x.id===id);if(!c)return;
  const rows=[];const r=(l,v)=>{if(v!=null&&v!=="")rows.push(`<dt>${l}</dt><dd>${esc(v)}</dd>`);};
- r(t("fCountry"),c.co?flag(c.co)+" "+cname(c.co):"");r("Born",c.by);r(t("fClub"),c.club);
- r("Pos",c.pos?pretty(c.pos):"");r("Foot",c.foot?pretty(c.foot):"");r("Height",c.h?c.h+" cm":"");
- r("Caps",c.caps);r("Goals",c.goals);r("Titles",(c.titles||[]).map(pretty).join(", "));
- r("Market value",c.mv?"€"+c.mv.toLocaleString():"");
- let photo="";if(c.img){let cr=`📷 ${esc(c.art||"Unknown")} · ${esc(c.lic||"")}`;if(c.isrc)cr+=` · <a href="${esc(c.isrc)}" target="_blank" rel="noopener">Wikimedia</a>`;photo=`<img class="hero" src="${esc(c.img)}" alt=""><div class="credit">${cr}</div>`;}
+ r(t("fCountry"),c.co?flag(c.co)+" "+cname(c.co):"");r(t("fLeague"),c.lg);r(t("founded"),c.fd);r(t("stadium"),c.st);
+ let photo="";if(c.img){let cr=`📷 ${esc(c.art||"Unknown")} · ${esc(c.lic||"")}`;if(c.isrc)cr+=` · <a href="${esc(c.isrc)}" target="_blank" rel="noopener">Wikimedia</a>`;photo=`<img class="hero" style="max-width:480px" src="${esc(c.img)}" alt=""><div class="credit">${cr}</div>`;}
  let src="";if(c.src&&c.src.length)src=`<div class="src">Sources: ${c.src.map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener">[${i+1}]</a>`).join("")}</div>`;
  document.getElementById("ovbox").innerHTML=`<span class="x" id="ovx">✕</span>${photo}<h2>${esc(pick(c.n))}</h2><div>${c.v?'<span class="badge ok">✓ '+t("verified")+'</span>':'<span class="badge no">'+t("unverified")+'</span>'}</div><p class="summary">${esc(pick(c.sm))}</p><dl class="specs">${rows.join("")}</dl>${src}`;
  document.getElementById("ov").classList.add("show");document.getElementById("ovx").onclick=()=>document.getElementById("ov").classList.remove("show");
 }
 function applyLabels(){document.documentElement.lang=L;document.body.dir=(L==="ar")?"rtl":"ltr";
- document.getElementById("q").placeholder=t("search");document.getElementById("hCountry").textContent=t("fCountry");document.getElementById("hClub").textContent=t("fClub");
+ document.getElementById("q").placeholder=t("search");document.getElementById("hCountry").textContent=t("fCountry");document.getElementById("hLeague").textContent=t("fLeague");
  const np=document.getElementById("navP"),nc=document.getElementById("navC");if(np)np.textContent="⚽ "+t("navPlayers");if(nc)nc.textContent="🏟️ "+t("navClubs");}
 document.addEventListener("click",e=>{
  const fi=e.target.closest(".fitem");if(fi){const d=fi.dataset.d,k=fi.dataset.k;F[d].has(k)?F[d].delete(k):F[d].add(k);page=0;refresh();return;}
@@ -103,10 +98,10 @@ document.addEventListener("click",e=>{
 function deb(fn,ms){let h;return function(){clearTimeout(h);h=setTimeout(fn,ms);};}
 document.getElementById("q").addEventListener("input",deb(()=>{F.q=document.getElementById("q").value.trim().toLowerCase();page=0;refresh();},200));
 document.getElementById("fcoq").addEventListener("input",deb(renderFacets,200));
-document.getElementById("fclq").addEventListener("input",deb(renderFacets,200));
+document.getElementById("flgq").addEventListener("input",deb(renderFacets,200));
 document.getElementById("lang").addEventListener("change",e=>{L=e.target.value;applyLabels();refresh();});
 document.getElementById("lang").value="ja";L="ja";
-fetch("data/players.json").then(r=>r.json()).then(d=>{ITEMS=d;applyLabels();refresh();})
+fetch("data/clubs.json").then(r=>r.json()).then(d=>{ITEMS=d;applyLabels();refresh();})
  .catch(e=>{document.getElementById("grid").innerHTML="<p class=count>データ読み込みに失敗（python3 -m http.server で開いてください）</p>";});
 </script>
 <footer>World Footballer Encyclopedia · 写真: Wikimedia Commons（各ライセンスは画像詳細/出典を参照）· データ出典付き</footer>
