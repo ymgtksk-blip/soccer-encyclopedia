@@ -6,17 +6,19 @@
 <header>
  <div class="bar" style="margin-top:0">
   <span class="brand">⚽ World Footballer Encyclopedia</span>
+  <nav class="nav"><a class="on" id="navPlayers" href="#players">⚽ Players</a><a id="navNT" href="#nt">🏆 W杯2026</a></nav>
   <select id="lang" class="langsel" aria-label="Language / 言語"><option value="en">English</option><option value="zh">中文</option><option value="hi">हिन्दी</option><option value="es">Español</option><option value="ar">العربية</option><option value="fr">Français</option><option value="pt">Português</option><option value="ru">Русский</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="ko">한국어</option><option value="it">Italiano</option></select>
  </div>
- <div class="bar">
+ <div class="bar" id="pbar">
   <input id="q" class="q" type="search" placeholder="Search…">
   <select id="sort" class="sortsel" aria-label="Sort"><option value="active"></option><option value="pop"></option><option value="young"></option><option value="old"></option><option value="name"></option></select>
   <button id="mfac" class="mobic">▤ Filters</button>
   <span class="count" id="count"></span>
  </div>
 </header>
-<div class="layout">
+<div class="layout" id="playersView">
  <aside class="facets" id="facets">
+  <div class="fgroup"><h3 id="hNT">🏆 W杯2026 招集</h3><input class="ffilter" id="fntq" placeholder="filter…"><div class="flist" id="fnt"></div></div>
   <div class="fgroup"><h3 id="hCountry">Nationality</h3><input class="ffilter" id="fcoq" placeholder="filter…"><div class="flist" id="fco"></div></div>
   <div class="fgroup"><h3 id="hClub">Club</h3><input class="ffilter" id="fclq" placeholder="filter…"><div class="flist" id="fcl"></div></div>
  </aside>
@@ -26,11 +28,19 @@
   <div class="pager" id="pager"></div>
  </main>
 </div>
+<div class="ntwrap" id="ntView" style="display:none">
+ <div class="ntbar">
+  <select id="ntsel" class="ntsel" aria-label="National team"></select>
+  <span class="ntmeta" id="ntmeta"></span>
+ </div>
+ <div class="pitch" id="pitch"></div>
+ <div class="bench" id="bench"></div>
+</div>
 <div id="ov"><div id="ovbox"></div></div>
 <script>
-const UI={"search": {"en": "Search…", "ja": "検索…"}, "fCountry": {"en": "Nationality", "ja": "国籍"}, "fClub": {"en": "Club", "ja": "クラブ"}, "sortPop": {"en": "★ Popular", "ja": "人気順"}, "sortActive": {"en": "● Active first", "ja": "現役を上に"}, "sortYoung": {"en": "Youngest", "ja": "若い順"}, "sortOld": {"en": "Oldest", "ja": "ベテラン順"}, "sortName": {"en": "Name A–Z", "ja": "名前順"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}};
+const UI={"search": {"en": "Search…", "ja": "検索…"}, "fCountry": {"en": "Nationality", "ja": "国籍"}, "fClub": {"en": "Club", "ja": "クラブ"}, "sortPop": {"en": "★ Popular", "ja": "人気順"}, "sortActive": {"en": "● Active first", "ja": "現役を上に"}, "sortYoung": {"en": "Youngest", "ja": "若い順"}, "sortOld": {"en": "Oldest", "ja": "ベテラン順"}, "sortName": {"en": "Name A–Z", "ja": "名前順"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}, "navNT": {"en": "World Cup 2026", "ja": "W杯2026"}, "ntGroup": {"en": "World Cup 2026 squad", "ja": "W杯2026 招集"}, "ntStarter": {"en": "XI", "ja": "スタメン"}, "ntSquad": {"en": "squad", "ja": "メンバー"}, "ntBench": {"en": "Substitutes", "ja": "控え"}, "ntPlayers": {"en": " players", "ja": "人"}, "ntWait": {"en": "World Cup 2026 squads — collecting…", "ja": "W杯2026スカッド 収集中…"}};
 let L="ja",ITEMS=[],page=0,SORT="active";const PS=48;
-const F={co:new Set(),club:new Set(),q:""};
+const F={co:new Set(),club:new Set(),nt:new Set(),q:""};
 const FB=["en","ja"];
 function t(k){return (UI[k]||{})[L]||(UI[k]||{}).en||k;}
 function pick(o){if(!o)return "";if(typeof o==="string")return o;if(o[L])return o[L];for(const c of FB){if(o[c])return o[c];}const v=Object.values(o);return v.length?v[0]:"";}
@@ -43,13 +53,19 @@ function pretty(k){if(!k)return "";k=String(k);return k.length<=3?k.toUpperCase(
 function matches(c,skip){
  if(skip!=="co"&&F.co.size&&!F.co.has(c.co||""))return false;
  if(skip!=="club"&&F.club.size&&!F.club.has(c.club||""))return false;
+ if(skip!=="nt"&&F.nt.size&&!F.nt.has(c.nt||""))return false;
  if(F.q){const h=(pick(c.n)+" "+(c.club||"")).toLowerCase();if(!h.includes(F.q))return false;}
  return true;
 }
 function filtered(){return ITEMS.filter(c=>matches(c,null));}
-function facetCounts(dim){const m=new Map();for(const c of ITEMS){if(!matches(c,dim))continue;const k=dim==="co"?(c.co||""):(c.club||"");m.set(k,(m.get(k)||0)+1);}return m;}
+function facetCounts(dim){const m=new Map();for(const c of ITEMS){if(!matches(c,dim))continue;const k=dim==="co"?(c.co||""):dim==="club"?(c.club||""):(c.nt||"");if(dim==="nt"&&!k)continue;m.set(k,(m.get(k)||0)+1);}return m;}
 
 function renderFacets(){
+ const fntEl=document.getElementById("fnt");
+ if(fntEl){let mn=facetCounts("nt");let qn=(document.getElementById("fntq").value||"").toLowerCase();
+  let an=[...mn.entries()].sort((a,b)=>b[1]-a[1]);
+  fntEl.innerHTML=an.filter(([k])=>!qn||cname(k).toLowerCase().includes(qn)||k.toLowerCase().includes(qn)).slice(0,200).map(([k,n])=>
+   `<div class="fitem ${F.nt.has(k)?"on":""}" data-d="nt" data-k="${esc(k)}"><span>${flag(k)} ${esc(cname(k))}</span><span class="c">${n}</span></div>`).join("")||'<div class="ntmeta" style="padding:4px 6px">（収集待ち）</div>';}
  let m=facetCounts("co");let q=(document.getElementById("fcoq").value||"").toLowerCase();
  let arr=[...m.entries()].sort((a,b)=>b[1]-a[1]);
  document.getElementById("fco").innerHTML=arr.filter(([k])=>!q||cname(k).toLowerCase().includes(q)||k.toLowerCase().includes(q)).slice(0,200).map(([k,n])=>
@@ -60,13 +76,14 @@ function renderFacets(){
    `<div class="fitem ${F.club.has(k)?"on":""}" data-d="club" data-k="${esc(k)}"><span>${esc(k)}</span><span class="c">${n}</span></div>`).join("");
 }
 function renderChips(){
- const ch=[];F.co.forEach(k=>ch.push(["co",k,`${flag(k)} ${cname(k)}`]));F.club.forEach(k=>ch.push(["club",k,k]));
+ const ch=[];F.nt.forEach(k=>ch.push(["nt",k,`🏆 ${flag(k)} ${cname(k)}`]));F.co.forEach(k=>ch.push(["co",k,`${flag(k)} ${cname(k)}`]));F.club.forEach(k=>ch.push(["club",k,k]));
  document.getElementById("chips").innerHTML=ch.map(([d,k,lab])=>`<span class="chip" data-d="${d}" data-k="${esc(k)}"><b>×</b> ${esc(lab)}</span>`).join("");
 }
 function card(c){
  const img=c.img?`<img class="thumb" loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">`:`<div class="noimg">⚽</div>`;
  const sub=[c.co?flag(c.co):"",c.club,c.pos?pretty(c.pos):"",c.by?(c.act?("🟢 "+c.by):c.by):""].filter(Boolean).join(" · ");
- return `<a class="card" href="players/${esc(c.id)}.html">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)} ${c.v?'<span class="badge ok">✓</span>':'<span class="badge no">?</span>'}</div></div></a>`;
+ const nt=c.nt?`<div><span class="ntbadge ${c.ntst?"start":""}">🏆 ${flag(c.nt)}${c.ntnum?(" #"+c.ntnum):""}${c.ntst?" "+t("ntStarter"):" "+t("ntSquad")}</span></div>`:"";
+ return `<a class="card" href="players/${esc(c.id)}.html">${img}<div class="cb"><div class="cn">${esc(pick(c.n))}</div><div class="cs">${esc(sub)} ${c.v?'<span class="badge ok">✓</span>':'<span class="badge no">?</span>'}</div>${nt}</div></a>`;
 }
 function sortList(a){
  if(SORT==="name")return a.sort((x,y)=>pick(x.n).localeCompare(pick(y.n)));
@@ -97,8 +114,10 @@ function showDetail(id){
 }
 function applyLabels(){document.documentElement.lang=L;document.body.dir=(L==="ar")?"rtl":"ltr";
  document.getElementById("q").placeholder=t("search");document.getElementById("hCountry").textContent=t("fCountry");document.getElementById("hClub").textContent=t("fClub");
- const np=document.getElementById("navP"),nc=document.getElementById("navC");if(np)np.textContent="⚽ "+t("navPlayers");if(nc)nc.textContent="🏟️ "+t("navClubs");
- const so=document.getElementById("sort");if(so){const m={pop:t("sortPop"),active:t("sortActive"),young:t("sortYoung"),old:t("sortOld"),name:t("sortName")};for(const o of so.options)o.textContent=m[o.value];}}
+ const hnt=document.getElementById("hNT");if(hnt)hnt.textContent="🏆 "+t("ntGroup");
+ const np2=document.getElementById("navPlayers"),nn=document.getElementById("navNT");if(np2)np2.textContent="⚽ "+t("navPlayers");if(nn)nn.textContent="🏆 "+t("navNT");
+ const so=document.getElementById("sort");if(so){const m={pop:t("sortPop"),active:t("sortActive"),young:t("sortYoung"),old:t("sortOld"),name:t("sortName")};for(const o of so.options)o.textContent=m[o.value];}
+ if(NTON&&NTREADY)drawPitch(NTCUR);}
 document.addEventListener("click",e=>{
  const fi=e.target.closest(".fitem");if(fi){const d=fi.dataset.d,k=fi.dataset.k;F[d].has(k)?F[d].delete(k):F[d].add(k);page=0;refresh();return;}
  const ch=e.target.closest(".chip");if(ch){F[ch.dataset.d].delete(ch.dataset.k);page=0;refresh();return;}
@@ -113,9 +132,50 @@ document.getElementById("q").addEventListener("input",deb(()=>{F.q=document.getE
 document.getElementById("sort").addEventListener("change",e=>{SORT=e.target.value;page=0;render();});
 document.getElementById("fcoq").addEventListener("input",deb(renderFacets,200));
 document.getElementById("fclq").addEventListener("input",deb(renderFacets,200));
+document.getElementById("fntq").addEventListener("input",deb(renderFacets,200));
 document.getElementById("lang").addEventListener("change",e=>{L=e.target.value;applyLabels();refresh();});
+
+/* ===== 代表チーム（W杯2026）フォーメーション・ビュー ===== */
+let NTON=false,NTREADY=false,NTDATA={},NTCUR="";
+const NT_LINE={gk:0,cb:1,rb:1,lb:1,wb:1,dm:2,cm:2,am:2,rw:3,lw:3,cf:3,st:3};
+const NT_LY=[90,70,46,21];
+const NT_LR={lb:0,lw:0,lm:0,wb:0,cb:1,dm:1,cm:1,am:1,cf:1,st:1,gk:1,rb:2,rw:2,rm:2};
+function drawPitch(code){
+ const sq=NTDATA[code];if(!sq)return;NTCUR=code;
+ document.getElementById("ntmeta").textContent=[sq.formation?("⚙ "+sq.formation):"",sq.manager?("👔 "+sq.manager):"",(sq.players||[]).length+t("ntPlayers")].filter(Boolean).join("   ·   ");
+ const ps=sq.players||[];const starters=ps.filter(p=>p.starter);const bench=ps.filter(p=>!p.starter);
+ const lines=[[],[],[],[]];
+ starters.forEach(p=>{const ln=NT_LINE[p.pos]!=null?NT_LINE[p.pos]:2;lines[ln].push(p);});
+ lines.forEach(arr=>arr.sort((a,b)=>((NT_LR[a.pos]!=null?NT_LR[a.pos]:1)-(NT_LR[b.pos]!=null?NT_LR[b.pos]:1))));
+ let html="";
+ for(let ln=0;ln<4;ln++){const arr=lines[ln],n=arr.length;arr.forEach((p,i)=>{
+  const x=n<=1?50:(12+76*i/(n-1)),y=NT_LY[ln];
+  const inner=`<span class="pnum">${p.num!=null?p.num:""}</span><span class="pnm">${esc(p.name||"")}</span>`;
+  html+=p.id?`<a class="pp" style="left:${x}%;top:${y}%" href="players/${esc(p.id)}.html">${inner}</a>`:`<span class="pp" style="left:${x}%;top:${y}%">${inner}</span>`;
+ });}
+ document.getElementById("pitch").innerHTML=html||`<div class="ntmeta" style="padding:20px;text-align:center">${t("noData")}</div>`;
+ const bs=bench.slice().sort((a,b)=>((a.num||99)-(b.num||99)));
+ document.getElementById("bench").innerHTML=`<h4>${t("ntBench")} (${bench.length})</h4><div class="benchgrid">`+bs.map(p=>{
+  const inner=`<span class="bn">${p.num!=null?p.num:""}</span><span>${esc(p.name||"")}</span><span class="bpos">${p.pos?pretty(p.pos):""}</span>`;
+  return p.id?`<a class="brow" href="players/${esc(p.id)}.html">${inner}</a>`:`<span class="brow">${inner}</span>`;
+ }).join("")+`</div>`;
+}
+function renderNTSelect(){
+ const codes=Object.keys(NTDATA).sort((a,b)=>cname(a).localeCompare(cname(b)));
+ const sel=document.getElementById("ntsel");
+ sel.innerHTML=codes.map(c=>`<option value="${c}">${flag(c)} ${esc(NTDATA[c].name||cname(c))}</option>`).join("");
+ if(codes.length){NTCUR=codes.includes(NTCUR)?NTCUR:codes[0];sel.value=NTCUR;drawPitch(NTCUR);}
+ else{document.getElementById("pitch").innerHTML=`<div class="ntmeta" style="padding:24px;text-align:center">${t("ntWait")}</div>`;document.getElementById("bench").innerHTML="";}
+}
+function loadSquads(){if(NTREADY)return;return fetch("data/squads.json").then(r=>r.json()).then(d=>{NTDATA=d.squads||{};NTREADY=true;renderNTSelect();}).catch(e=>{NTDATA={};NTREADY=true;renderNTSelect();});}
+function showNT(){NTON=true;document.getElementById("playersView").style.display="none";document.getElementById("pbar").style.display="none";document.getElementById("ntView").style.display="block";document.getElementById("navNT").classList.add("on");document.getElementById("navPlayers").classList.remove("on");loadSquads();}
+function showPlayers(){NTON=false;document.getElementById("ntView").style.display="none";document.getElementById("pbar").style.display="flex";document.getElementById("playersView").style.display="flex";document.getElementById("navPlayers").classList.add("on");document.getElementById("navNT").classList.remove("on");}
+document.getElementById("navNT").addEventListener("click",e=>{e.preventDefault();showNT();});
+document.getElementById("navPlayers").addEventListener("click",e=>{e.preventDefault();showPlayers();});
+document.getElementById("ntsel").addEventListener("change",e=>{drawPitch(e.target.value);});
+
 document.getElementById("lang").value="ja";L="ja";
-fetch("data/players.json").then(r=>r.json()).then(d=>{ITEMS=d;applyLabels();refresh();})
+fetch("data/players.json").then(r=>r.json()).then(d=>{ITEMS=d;applyLabels();refresh();if(location.hash==="#nt")showNT();})
  .catch(e=>{document.getElementById("grid").innerHTML="<p class=count>データ読み込みに失敗（python3 -m http.server で開いてください）</p>";});
 </script>
 <footer>World Footballer Encyclopedia · 写真: Wikimedia Commons（各ライセンスは画像詳細/出典を参照）· データ出典付き</footer>

@@ -52,3 +52,23 @@ footer{max-width:1200px;margin:24px auto;padding:16px;color:var(--sub);font-size
 .nowtag{display:inline-block;margin-left:8px;font-size:10px;font-weight:800;color:#06210f;background:var(--accent);border-radius:99px;padding:1px 7px;vertical-align:middle}
 a.card{color:inherit;display:block}
 .sortsel{font-weight:600;max-width:160px}
+.ntbadge{display:inline-block;font-size:10px;font-weight:800;border-radius:99px;padding:1px 6px;margin-top:4px;background:#2a2140;color:#c9b6ff;border:1px solid #4a3a7a}
+.ntbadge.start{background:#15351f;color:#7dffb0;border-color:#1f5130}
+/* 代表チーム フォーメーション・ビュー */
+.ntwrap{max-width:1000px;margin:0 auto;padding:0 4px}
+.ntbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ntsel{font-weight:700;min-width:200px}
+.ntmeta{color:var(--sub);font-size:13px}
+.pitch{position:relative;width:100%;max-width:560px;margin:0 auto;aspect-ratio:68/100;background:linear-gradient(#1b6b3a,#155730);border:2px solid #2e8c52;border-radius:14px;overflow:hidden}
+.pitch::before{content:"";position:absolute;left:6%;right:6%;top:50%;height:0;border-top:2px solid rgba(255,255,255,.25)}
+.pitch::after{content:"";position:absolute;left:38%;right:38%;top:46%;aspect-ratio:1;border:2px solid rgba(255,255,255,.25);border-radius:50%}
+.pp{position:absolute;transform:translate(-50%,-50%);text-align:center;width:74px}
+.pp .pnum{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#0f1115;border:2px solid #fff;color:#fff;font-weight:800;font-size:13px}
+.pp .pnm{display:block;font-size:11px;font-weight:700;color:#fff;margin-top:2px;text-shadow:0 1px 2px rgba(0,0,0,.6);line-height:1.15}
+a.pp{color:#fff}a.pp:hover .pnum{border-color:var(--accent)}
+.bench{margin:16px auto 0;max-width:560px}
+.bench h4{color:var(--sub);font-size:13px;margin:0 0 8px}
+.benchgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.brow{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:13px}
+.brow .bn{color:var(--sub);font-variant-numeric:tabular-nums;min-width:22px}
+.brow .bpos{margin-left:auto;color:var(--sub);font-size:11px}
