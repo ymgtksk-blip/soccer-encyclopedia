@@ -73,7 +73,7 @@ a.pp{color:#fff}a.pp:hover .pnum{border-color:var(--accent)}
 .brow .bn{color:var(--sub);font-variant-numeric:tabular-nums;min-width:22px}
 .brow .bpos{margin-left:auto;color:var(--sub);font-size:11px}
 /* ===== ワクワク ヒーロー ===== */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding:34px 16px 26px;text-align:center}
+.heroband{position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding:34px 16px 26px;text-align:center}
 .herobg{position:absolute;inset:-25%;z-index:0;filter:blur(26px);opacity:.9;
  background:radial-gradient(circle at 18% 28%,#16d67a66,transparent 42%),radial-gradient(circle at 82% 18%,#22d3ee66,transparent 42%),radial-gradient(circle at 50% 85%,#37c87155,transparent 48%),radial-gradient(circle at 75% 75%,#0ea5e944,transparent 40%);
  animation:drift 16s ease-in-out infinite}
@@ -106,4 +106,4 @@ a.pp{color:#fff}a.pp:hover .pnum{border-color:var(--accent)}
 .thumb{transition:transform .3s}
 .grid .card{animation:rise .5s both}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media(max-width:780px){.hero{padding:22px 12px 18px}.stats{gap:16px}}
+@media(max-width:780px){.heroband{padding:22px 12px 18px}.stats{gap:16px}}
