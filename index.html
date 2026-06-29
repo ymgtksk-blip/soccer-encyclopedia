@@ -10,7 +10,7 @@
  </div>
  <div class="bar">
   <input id="q" class="q" type="search" placeholder="Search…">
-  <select id="sort" class="sortsel" aria-label="Sort"><option value="pop"></option><option value="active"></option><option value="young"></option><option value="old"></option><option value="name"></option></select>
+  <select id="sort" class="sortsel" aria-label="Sort"><option value="active"></option><option value="pop"></option><option value="young"></option><option value="old"></option><option value="name"></option></select>
   <button id="mfac" class="mobic">▤ Filters</button>
   <span class="count" id="count"></span>
  </div>
@@ -29,7 +29,7 @@
 <div id="ov"><div id="ovbox"></div></div>
 <script>
 const UI={"search": {"en": "Search…", "ja": "検索…"}, "fCountry": {"en": "Nationality", "ja": "国籍"}, "fClub": {"en": "Club", "ja": "クラブ"}, "sortPop": {"en": "★ Popular", "ja": "人気順"}, "sortActive": {"en": "● Active first", "ja": "現役を上に"}, "sortYoung": {"en": "Youngest", "ja": "若い順"}, "sortOld": {"en": "Oldest", "ja": "ベテラン順"}, "sortName": {"en": "Name A–Z", "ja": "名前順"}, "results": {"en": "results", "ja": "件"}, "verified": {"en": "Verified", "ja": "検証済み"}, "unverified": {"en": "Unverified", "ja": "未検証"}, "unknown": {"en": "Unknown", "ja": "不明"}, "noData": {"en": "No matches", "ja": "該当なし"}, "prev": {"en": "Prev", "ja": "前へ"}, "next": {"en": "Next", "ja": "次へ"}, "navPlayers": {"en": "Players", "ja": "選手"}, "navClubs": {"en": "Clubs", "ja": "クラブ"}};
-let L="ja",ITEMS=[],page=0,SORT="pop";const PS=48;
+let L="ja",ITEMS=[],page=0,SORT="active";const PS=48;
 const F={co:new Set(),club:new Set(),q:""};
 const FB=["en","ja"];
 function t(k){return (UI[k]||{})[L]||(UI[k]||{}).en||k;}
