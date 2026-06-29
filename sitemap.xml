@@ -404,13 +404,13 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/rodrygo.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/marco-verratti.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/hakim-ziyech.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/aleksandar-mitrovic.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/andrea-barzagli.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/axel-witsel.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/mark-van-bommel.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/andreas-brehme.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/giovanni-van-bronckhorst.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/blaise-matuidi.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/aleksandar-mitrovic.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/bojan-krki.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pedro.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/marco-materazzi.html</loc></url>
@@ -920,6 +920,8 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/rodrigo-de-paul.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/th-o-hernandez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/ao-tanaka.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/piotr-zieli-ski.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/youri-tielemans.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/phillip-cocu.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/aggelos-charisteas.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/hrant-dink.html</loc></url>
@@ -985,9 +987,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/erik-ten-hag.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alberto-moreno.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/manu-trigueros.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/piotr-zieli-ski.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/naomichi-ueda.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/youri-tielemans.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/corentin-tolisso.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/mario-pa-ali.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nabil-fekir.html</loc></url>
@@ -1097,6 +1097,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/william-saliba.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/thomas-partey.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/marcus-thuram.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/du-an-tadi.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/hugo-almeida.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/tomislav-mari.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/diego-benaglio.html</loc></url>
@@ -1163,7 +1164,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/lassana-diarra.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/dmitri-radchenko.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/aleix-vidal.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/du-an-tadi.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nacer-chadli.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/valdo.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/grzegorz-krychowiak.html</loc></url>
@@ -1189,6 +1189,8 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alex-sandro.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/sofyan-amrabat.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/jo-ko-gvardiol.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/moise-kean.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/s-bastien-haller.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/jos-manuel-pinto.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/giampiero-boniperti.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/carlitos.html</loc></url>
@@ -1276,7 +1278,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/stephen-laybutt.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/emil-forsberg.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/shoya-nakajima.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/s-bastien-haller.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/yuichi-maruyama.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/zlatko-dali.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/giovanni-di-lorenzo.html</loc></url>
@@ -1285,7 +1286,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/k-itakura.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/denis-zakaria.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/unai-sim-n.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/moise-kean.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/sergi-o-dest.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/randal-kolo-muani.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nuno-mendes.html</loc></url>
@@ -1396,6 +1396,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/lisandro-mart-nez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nicol-s-tagliafico.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/mike-maignan.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/leandro-trossard.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/ola-toivonen.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pavel-horv-th.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/antonio-cabrini.html</loc></url>
@@ -1503,7 +1504,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/gerard-moreno.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pierre-emile-h-jbjerg.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/sei-muroya.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/leandro-trossard.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/adnan-januzaj.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/malcom.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/dominik-livakovi.html</loc></url>
@@ -1523,6 +1523,8 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/wilfried-zaha.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/douard-mendy.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alireza-jahanbakhsh.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alessandro-bastoni.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/j-r-my-doku.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/wahbi-khazri.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/ivo-ulich.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/chris-wood.html</loc></url>
@@ -1640,10 +1642,8 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/kalvin-phillips.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/d-vinson-s-nchez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/robin-le-normand.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alessandro-bastoni.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/timothy-weah.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/callum-hudson-odoi.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/j-r-my-doku.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/benjamin-e-ko.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/vitinha.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/mois-s-caicedo.html</loc></url>
@@ -1910,6 +1910,8 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/cristian-romero.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/isma-la-sarr.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/kaoru-mitoma.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/sandro-tonali.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/federico-dimarco.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/gonzalo-castro.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/heiko-westermann.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/carlos-s-nchez.html</loc></url>
@@ -2022,7 +2024,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/hwang-hee-chan.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/harry-winks.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/artem-dovbyk.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/federico-dimarco.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/ola-aina.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/eljif-elmas.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/koya-kitagawa.html</loc></url>
@@ -2036,7 +2037,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nayef-aguerd.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/daiki-hashioka.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pau-torres.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/sandro-tonali.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/yukinari-sugawara.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/aaron-wan-bissaka.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alisha-lehmann.html</loc></url>
@@ -2053,6 +2053,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pau-cubars.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/gabriel-magalh-es.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/kim-min-jae.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/charles-de-ketelaere.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/marvin-plattenhardt.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/birgit-prinz.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/kevin-volland.html</loc></url>
@@ -2188,7 +2189,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/samuel-chukwueze.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/joshua-zirkzee.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/noni-madueke.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/charles-de-ketelaere.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/giorgi-mamardashvili.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/abdukodir-khusanov.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/dean-huijsen.html</loc></url>
@@ -2197,6 +2197,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/lex-baena.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nicol-s-gonz-lez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/r-ben-neves.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/gianluca-scamacca.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/baf-timbi-gomis.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/gr-gory-coupet.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/jonathan-dos-santos.html</loc></url>
@@ -2345,7 +2346,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/isma-l-bennacer.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/benjamin-henrichs.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/ethan-ampadu.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/gianluca-scamacca.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pedro-neto.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/david-neres.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/taiyo-koga.html</loc></url>
@@ -2359,6 +2359,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/warren-za-re-emery.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/juan-musso.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/nico-paz.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/serhou-guirassy.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/hakan-balta.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/roberto-bettega.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/adam-johnson.html</loc></url>
@@ -2499,7 +2500,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/timothy-castagne.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/guido-rodr-guez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/ainsley-maitland-niles.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/serhou-guirassy.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/konrad-laimer.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/danny-ward.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/tyler-adams.html</loc></url>
@@ -2709,6 +2709,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/eldor-shomurodov.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/thiago-almada.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/mateo-retegui.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/milos-kerkez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/felice-borel.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/mike-hanke.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/lucas-piaz-n.html</loc></url>
@@ -2904,7 +2905,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/bart-verbruggen.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/pierre-kalulu.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/y-remy-pino.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/milos-kerkez.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/aleksandar-pavlovi.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/bremer.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/reto-ziegler.html</loc></url>
@@ -3124,6 +3124,7 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/stephen-ward.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/jeff-hendrick.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/igor-thiago.html</loc></url>
+  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/davide-frattesi.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/robin-quaison.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/markus-rosenberg.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/bekim-balaj.html</loc></url>
@@ -3350,7 +3351,6 @@
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/manuel-ugarte.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/yoane-wissa.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/alexis-saelemaekers.html</loc></url>
-  <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/davide-frattesi.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/jun-endo.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/morgan-rogers.html</loc></url>
   <url><loc>https://ymgtksk-blip.github.io/soccer-encyclopedia/players/arisa-matsubara.html</loc></url>
