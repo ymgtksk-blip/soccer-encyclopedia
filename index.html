@@ -18,6 +18,7 @@
 </header>
 <section class="heroband" id="hero">
  <div class="herobg"></div>
+ <div class="herophotos" id="heroBackdrop" aria-hidden="true"></div>
  <div class="heroinner">
   <h1 class="herotitle">⚽ World Footballer Encyclopedia</h1>
   <p class="herosub" id="herosub">世界中のサッカー選手を、12言語で。スター、伝説、そして W杯2026 全48カ国の代表まで。</p>
@@ -195,12 +196,21 @@ function animateCount(el,to){if(!el)return;let s=null;function step(t){if(s===nu
 function renderShowcase(){
  const top=ITEMS.filter(c=>c.img).sort((a,b)=>((b.act||0)-(a.act||0))||((b.sl||0)-(a.sl||0))).slice(0,18);
  const el=document.getElementById("showcase");if(!el)return;
- el.innerHTML=top.map(c=>`<a class="scard" href="players/${esc(c.id)}.html"><img loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">${c.nt?`<span class="scnt">🏆 ${flag(c.nt)}${c.ntnum?(" #"+c.ntnum):""}</span>`:""}<div class="scn">${esc(pick(c.n))}</div></a>`).join("");
+ if(!top.length){el.innerHTML="";return;}
+ const cards=top.concat(top).map(c=>`<a class="scard" href="players/${esc(c.id)}.html"><img loading="lazy" src="${esc(c.img)}" alt="${esc(pick(c.n))}">${c.nt?`<span class="scnt">🏆 ${flag(c.nt)}${c.ntnum?(" #"+c.ntnum):""}</span>`:""}<div class="scn">${esc(pick(c.n))}</div></a>`).join("");
+ el.innerHTML=`<div class="showtrack">${cards}</div>`;
+}
+function initHeroBackdrop(){
+ const el=document.getElementById("heroBackdrop");if(!el)return;
+ const imgs=ITEMS.filter(c=>c.img).slice(0,6).map(c=>c.img);
+ if(!imgs.length){el.innerHTML="";return;}
+ el.innerHTML=imgs.map(u=>`<span class="herotile" style="background-image:url('${esc(u)}')"></span>`).join("");
 }
 function initHero(){
  animateCount(document.getElementById("stPlayers"),ITEMS.length);
  animateCount(document.getElementById("stSquads"),new Set(ITEMS.filter(c=>c.nt).map(c=>c.nt)).size);
  animateCount(document.getElementById("stLang"),12);
+ initHeroBackdrop();
  renderShowcase();
 }
 function goRandom(){const pool=ITEMS.filter(c=>c.img||c.v);if(!pool.length)return;const c=pool[Math.floor(Math.random()*pool.length)];location.href="players/"+encodeURIComponent(c.id)+".html";}

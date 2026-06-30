@@ -78,6 +78,9 @@ a.pp{color:#fff}a.pp:hover .pnum{border-color:var(--accent)}
  background:radial-gradient(circle at 18% 28%,#16d67a66,transparent 42%),radial-gradient(circle at 82% 18%,#22d3ee66,transparent 42%),radial-gradient(circle at 50% 85%,#37c87155,transparent 48%),radial-gradient(circle at 75% 75%,#0ea5e944,transparent 40%);
  animation:drift 16s ease-in-out infinite}
 @keyframes drift{0%{transform:translate(0,0) scale(1.15)}50%{transform:translate(-4%,3%) scale(1.35)}100%{transform:translate(0,0) scale(1.15)}}
+.herophotos{position:absolute;inset:0;z-index:0;display:flex;gap:10px;padding:0 6vw;opacity:.34;filter:blur(12px);transform:scale(1.04);pointer-events:none}
+.herophotos::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,21,.92),rgba(15,17,21,.56) 38%,rgba(15,17,21,.86)),linear-gradient(180deg,rgba(15,17,21,.72),rgba(15,17,21,.28) 46%,rgba(15,17,21,.88))}
+.herotile{flex:1 1 0;min-width:150px;background-size:cover;background-position:center;transform:skewX(-5deg) scale(1.08)}
 .heroinner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
 .herotitle{font-size:clamp(26px,5vw,46px);font-weight:900;letter-spacing:-.02em;margin:0;
  background:linear-gradient(90deg,#7dffb0,#22d3ee 60%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -92,8 +95,11 @@ a.pp{color:#fff}a.pp:hover .pnum{border-color:var(--accent)}
 .cta:hover{transform:translateY(-2px);border-color:var(--accent)}
 .cta.primary{border:0;color:#06210f;background:linear-gradient(90deg,#37c871,#22d3ee);box-shadow:0 6px 22px #22d3ee55}
 .cta.primary:hover{box-shadow:0 10px 30px #22d3ee88}
-.showcase{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.showcase{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .showcase::-webkit-scrollbar{height:7px}.showcase::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
+.showtrack{display:flex;gap:12px;width:max-content;animation:marquee 58s linear infinite;will-change:transform}
+.showcase:hover .showtrack,.showcase:active .showtrack{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 6px))}}
 .scard{flex:0 0 132px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;transition:transform .15s,border-color .15s,box-shadow .2s}
 .scard:hover{transform:translateY(-4px) scale(1.03);border-color:var(--accent);box-shadow:0 10px 26px #0008}
 .scard img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:#11141a}
