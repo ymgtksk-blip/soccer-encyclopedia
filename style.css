@@ -32,6 +32,12 @@ input.q{flex:1;min-width:160px}
 .credit{font-size:12px;color:var(--sub);margin:6px 0 4px}.crumb{font-size:13px;margin-bottom:8px}
 .specs{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px;margin:14px 0}.specs dt{color:var(--sub)}.specs dd{margin:0}
 .summary{font-size:14px;color:#d6d9df}.src{margin-top:12px;font-size:12px}.src a{margin-right:8px}
+.sharerow{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.sharebtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--txt);font-weight:700;font-size:13px;padding:7px 12px;cursor:pointer}
+.sharebtn:hover{border-color:var(--accent);color:var(--accent)}
+.related{margin:20px 0}.related h2{font-size:16px;margin:0 0 10px}.relgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.relcard{display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 10px;color:var(--txt)}
+.relcard:hover{border-color:var(--accent)}.relcard b{font-size:13px}.relcard span{font-size:12px;color:var(--sub)}
 footer{max-width:1200px;margin:24px auto;padding:16px;color:var(--sub);font-size:12px;border-top:1px solid var(--line)}
 #ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;display:none;overflow:auto;padding:24px}
 #ov.show{display:block}#ovbox{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
@@ -96,6 +102,7 @@ a.pp{color:#fff}a.pp:hover .pnum{border-color:var(--accent)}
 .cta.primary{border:0;color:#06210f;background:linear-gradient(90deg,#37c871,#22d3ee);box-shadow:0 6px 22px #22d3ee55}
 .cta.primary:hover{box-shadow:0 10px 30px #22d3ee88}
 .showcase{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:thin;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.spotrow{max-width:1200px;margin:14px auto 0;padding:0 16px}.spotrow h3{font-size:15px;margin:0 0 8px;color:var(--txt)}
 .showcase::-webkit-scrollbar{height:7px}.showcase::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
 .showtrack{display:flex;gap:12px;width:max-content;animation:marquee 58s linear infinite;will-change:transform}
 .showcase:hover .showtrack,.showcase:active .showtrack{animation-play-state:paused}
